@@ -4,24 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Lesson 4</title>
 </head>
 <body>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
     <div id="app">
-        <button v-on:click="clickedButton('message keluar', $event)">Click Here</button>
+        <input type="text" v-on:keyup.enter="pressedEnter">
     </div>
 
 <script>
     new Vue({
         el: '#app',
         methods: {
-            clickedButton: function(message, event){
-                console.log(event);
-                alert(message)
+            pressedEnter: function(){
+                alert('sape ko suruh ko tekan oi');
             }
         }
+        
     });
 </script>
 </body>
