@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    
+<div id="app">
+    <!-- EXERCISE 1: Implement a "uwfirst" filter which transforms the first 
+    character of each word to uppercase. Use this filter to transform the 
+    paragraph's title with the v-bind directive.
+    HINT: Use JavaScript's "split" function to split the message into words. -->
+    <p v-bind:title="message | uwfirst">{{ message }}</p>
+    
+    <!-- EXERCISE 2: Apply the filter from the first exercise to the below 
+    paragraph. Then implement a filter which removes any spaces and chain these 
+    two filters together. -->
+    <p>{{ message | uwfirst | removeSpaces }}</p>
+  </div>
+
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            message: 'hello world!'
+        },
+        filters: {
+            uwfirst: function(value){
+                if (!value){
+                return '';
+                }
+                
+                var parts = value.toString().split(' ');
+                
+                var uppercasedWords = parts.map(function(word) {
+                        return word.charAt(0).toUpperCase() + word.slice(1);
+                    });
+                return uppercasedWords.join(' ');
+            },
+            removeSpaces: function(value) {
+                    if (!value) {
+                    return '';
+                }
+                
+                return value.toString().replace(/ /g, '');
+                }
+            }
+        });
+</script>
+</body>
+</html>
