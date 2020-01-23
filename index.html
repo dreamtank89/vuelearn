@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    
+<div id="app">
+        <!-- EXERCISE 1: Make the below text input update a data property on every 
+        "keyup" event. Also output the data property.
+        Hint: event.target.value gives access to input value. -->
+        <input type="text" v-on:keyup="nameField">
+        Output: {{ name }}
+      
+        <br><br>
+        
+        <!-- EXERCISE 2: Make the below text input update the data property from 
+        exercise 1, but only when pressing the Control + Enter keys. 
+        Hint: The key modifier for the Control key is named "ctrl" -->
+        <input type="text" v-on:keyup.enter="nameField">
+        Output: {{ name }}
+        
+        <br><br>
+        
+        <!-- EXERCISE 3: Prevent the below form from submitting. 
+        Hint: Prevent the "submit" event on the form. -->
+        <form action="" method="GET" v-on:submit.prevent>
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data:{
+            name: ''
+
+        },
+        methods: {
+            nameField: function(event) {
+                    this.name = event.target.value;
+                }
+        }
+    });
+</script>
+</body>
+</html>
